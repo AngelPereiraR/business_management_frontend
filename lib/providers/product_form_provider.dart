@@ -7,7 +7,7 @@ class ProductFormProvider extends ChangeNotifier {
 
   String name = '';
   String description = '';
-  double price = 0.0;
+  double? price = 0.0;
 
   bool isValidForm() {
     return formKey.currentState?.validate() ?? false;

@@ -7,14 +7,15 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:requests/requests.dart';
 
 class LoginServices extends ChangeNotifier {
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app';
 
   final storage = const FlutterSecureStorage();
 
   LoginServices();
 
   postLogin(String user, String password) async {
-    var response = await Requests.post("http://$_baseUrl/login",
+    var response = await Requests.post("$_baseUrl/login",
         body: {'user': user, 'password': password});
 
     var type;

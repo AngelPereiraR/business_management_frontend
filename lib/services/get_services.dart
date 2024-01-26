@@ -9,7 +9,8 @@ import '../models/models.dart';
 
 class GetServices extends ChangeNotifier {
   //Cambiar la IP por la conexión que tenga cada uno
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app';
 
   List<Category> categories = [];
 
@@ -22,7 +23,7 @@ class GetServices extends ChangeNotifier {
   getCompanies() async {
     companies.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get("http://$_baseUrl/api/companies",
+    var response = await Requests.get("$_baseUrl/api/companies",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -133,7 +134,7 @@ class GetServices extends ChangeNotifier {
     companies.clear();
     String? token = await LoginServices().readToken();
     var response = await Requests.get(
-        "http://$_baseUrl/api/company/companies/$username",
+        "$_baseUrl/api/company/companies/$username",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -237,8 +238,7 @@ class GetServices extends ChangeNotifier {
   getCategories(int? id) async {
     categories.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get(
-        "http://$_baseUrl/api/company/$id/categories",
+    var response = await Requests.get("$_baseUrl/api/company/$id/categories",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -295,8 +295,7 @@ class GetServices extends ChangeNotifier {
 
   getCategory(int? id) async {
     String? token = await LoginServices().readToken();
-    var response = await Requests.get(
-        "http://$_baseUrl/api/user/categories/$id",
+    var response = await Requests.get("$_baseUrl/api/user/categories/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     int idCategory = 0;
@@ -340,8 +339,7 @@ class GetServices extends ChangeNotifier {
   getProductsFromCategory(int? id) async {
     products2.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get(
-        "http://$_baseUrl/api/categories/$id/products",
+    var response = await Requests.get("$_baseUrl/api/categories/$id/products",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -399,8 +397,7 @@ class GetServices extends ChangeNotifier {
   getProductsFromCompany(int? id) async {
     products3.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get(
-        "http://$_baseUrl/api/companies/$id/products",
+    var response = await Requests.get("$_baseUrl/api/companies/$id/products",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -458,8 +455,7 @@ class GetServices extends ChangeNotifier {
   getSuggestionsFromCompany(int? id) async {
     suggestions.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get(
-        "http://$_baseUrl/api/companies/$id/suggestions",
+    var response = await Requests.get("$_baseUrl/api/companies/$id/suggestions",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -598,7 +594,7 @@ class GetServices extends ChangeNotifier {
   getUsers() async {
     users.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get("http://$_baseUrl/api/users",
+    var response = await Requests.get("$_baseUrl/api/users",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -672,7 +668,7 @@ class GetServices extends ChangeNotifier {
   getOrders() async {
     orders.clear();
     String? token = await LoginServices().readToken();
-    var response = await Requests.get("http://$_baseUrl/api/orders",
+    var response = await Requests.get("$_baseUrl/api/orders",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;
@@ -774,7 +770,7 @@ class GetServices extends ChangeNotifier {
 
   getOrder(int? idOrder) async {
     String? token = await LoginServices().readToken();
-    var response = await Requests.get("http://$_baseUrl/api/orders/$idOrder",
+    var response = await Requests.get("$_baseUrl/api/orders/$idOrder",
         headers: {'Authorization': 'Bearer $token'});
 
     isLoading = true;

@@ -74,10 +74,10 @@ class _CompanyUpdateProductScreenState
                   child: SizedBox(
                 width: 300,
                 child: DecoratedBox(
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(10.0),
-                          // ignore: prefer_const_literals_to_create_immutables
-                          boxShadow: [
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      // ignore: prefer_const_literals_to_create_immutables
+                      boxShadow: [
                         const BoxShadow(
                           color: Colors.white,
                           blurRadius: 5,
@@ -224,12 +224,19 @@ class _InsertProductForm extends StatelessWidget {
                   ),
                   prefixIcon: Icon(Icons.price_check,
                       color: Color.fromARGB(255, 255, 97, 0))),
-              onChanged: (value) =>
-                  priceProductEditCompany = double.parse(value),
+              onChanged: (value) => {
+                priceProductEditCompany = double.tryParse(value),
+              },
               validator: (value) {
-                return (value != null && value.isNotEmpty)
+                if (value == null || value.isEmpty) {
+                  return 'Please, enter the product price';
+                }
+
+                double? parsedValue = double.tryParse(value);
+
+                return (parsedValue != null)
                     ? null
-                    : 'Please, enter the product price';
+                    : 'Please, enter a valid number for the product price';
               },
             ),
             const SizedBox(height: 10),

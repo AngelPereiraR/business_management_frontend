@@ -6,13 +6,14 @@ import '../services/services.dart';
 
 class DeleteServices extends ChangeNotifier {
   //Cambiar la IP por la conexión que tenga cada uno
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app';
 
   DeleteServices();
 
   deleteCategory(int id) async {
     String? token = await LoginServices().readToken();
-    Requests.delete("http://$_baseUrl/api/company/categories/$id",
+    Requests.delete("$_baseUrl/api/company/categories/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     var resp = 'OK';
@@ -21,7 +22,7 @@ class DeleteServices extends ChangeNotifier {
 
   deleteProduct(int id) async {
     String? token = await LoginServices().readToken();
-    Requests.delete("http://$_baseUrl/api/company/products/$id",
+    Requests.delete("$_baseUrl/api/company/products/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     var resp = 'OK';
@@ -30,7 +31,7 @@ class DeleteServices extends ChangeNotifier {
 
   deleteCompany(int id) async {
     String? token = await LoginServices().readToken();
-    Requests.delete("http://$_baseUrl/api/company/companies/$id",
+    Requests.delete("$_baseUrl/api/company/companies/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     var resp = 'OK';
@@ -39,7 +40,7 @@ class DeleteServices extends ChangeNotifier {
 
   deleteUser(int id) async {
     String? token = await LoginServices().readToken();
-    Requests.delete("http://$_baseUrl/api/users/$id",
+    Requests.delete("$_baseUrl/api/users/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     var resp = 'OK';
@@ -48,7 +49,7 @@ class DeleteServices extends ChangeNotifier {
 
   deleteSuggestion(int id) async {
     String? token = await LoginServices().readToken();
-    Requests.delete("http://$_baseUrl/api/suggestions/$id",
+    Requests.delete("$_baseUrl/api/suggestions/$id",
         headers: {'Authorization': 'Bearer $token'});
 
     var resp = 'OK';

@@ -8,14 +8,14 @@ import '../services/services.dart';
 
 class InsertServices extends ChangeNotifier {
   //Cambiar la IP por la conexión que tenga cada uno
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app';
 
   InsertServices();
 
   insertCategory(int? id, String name, String description) async {
     String? token = await LoginServices().readToken();
-    var response = await Requests.post(
-        "http://$_baseUrl/api/company/$id/categories",
+    var response = await Requests.post("$_baseUrl/api/company/$id/categories",
         body: {'name': name, 'description': description},
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
@@ -39,7 +39,7 @@ class InsertServices extends ChangeNotifier {
     String? token = await LoginServices().readToken();
 
     var response = await Requests.post(
-        "http://$_baseUrl/api/company/$idCompany/categories/$idCategory/product",
+        "$_baseUrl/api/company/$idCompany/categories/$idCategory/product",
         body: {
           'name': name,
           'description': description,
@@ -66,7 +66,7 @@ class InsertServices extends ChangeNotifier {
   insertCompany(String? name, String? description) async {
     String? token = await LoginServices().readToken();
 
-    var response = await Requests.post("http://$_baseUrl/api/company/companies",
+    var response = await Requests.post("$_baseUrl/api/company/companies",
         body: {
           'name': name,
           'description': description,
@@ -93,15 +93,15 @@ class InsertServices extends ChangeNotifier {
       int? id, String? commentary, String state, String? username) async {
     String? token = await LoginServices().readToken();
 
-    var response = await Requests.post(
-        "http://$_baseUrl/api/companies/$id/suggestions/$username",
-        body: {
-          'commentary': commentary,
-          'state': state,
-          'username': username,
-        },
-        headers: {'Authorization': 'Bearer $token'},
-        bodyEncoding: RequestBodyEncoding.JSON);
+    var response =
+        await Requests.post("$_baseUrl/api/companies/$id/suggestions/$username",
+            body: {
+              'commentary': commentary,
+              'state': state,
+              'username': username,
+            },
+            headers: {'Authorization': 'Bearer $token'},
+            bodyEncoding: RequestBodyEncoding.JSON);
 
     var resp;
     final Map<String, dynamic> insertSuggestion =
@@ -122,7 +122,7 @@ class InsertServices extends ChangeNotifier {
     String? token = await LoginServices().readToken();
 
     var response = await Requests.post(
-        "http://$_baseUrl/api/orders/$companyId/$username/$finalPrice",
+        "$_baseUrl/api/orders/$companyId/$username/$finalPrice",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 

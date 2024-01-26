@@ -6,14 +6,15 @@ import 'package:requests/requests.dart';
 
 class RegisterServices extends ChangeNotifier {
   //Cambiar la IP por la conexión que tenga cada uno
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app';
 
   final storage = const FlutterSecureStorage();
 
   RegisterServices();
 
   postRegister(String email, String username, String password) async {
-    var response = await Requests.post("http://$_baseUrl/register",
+    var response = await Requests.post("$_baseUrl/register",
         body: {'email': email, 'username': username, 'password': password},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -40,7 +41,7 @@ class RegisterServices extends ChangeNotifier {
   }
 
   postRegisterCompany(String email, String username, String password) async {
-    var response = await Requests.post("http://$_baseUrl/registerCompany",
+    var response = await Requests.post("$_baseUrl/registerCompany",
         body: {'email': email, 'username': username, 'password': password},
         bodyEncoding: RequestBodyEncoding.JSON);
 

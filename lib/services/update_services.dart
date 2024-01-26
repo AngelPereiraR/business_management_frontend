@@ -8,7 +8,8 @@ import '../services/services.dart';
 
 class UpdateServices extends ChangeNotifier {
   //Cambiar la IP por la conexión que tenga cada uno
-  final String _baseUrl = '192.168.212.68:8080';
+  final String _baseUrl =
+      'https://business-management-api-angelpereira.koyeb.app/';
 
   UpdateServices();
 
@@ -16,7 +17,7 @@ class UpdateServices extends ChangeNotifier {
       String? description) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/company/$idCompany/categories/$idCategory",
+        "$_baseUrl/api/company/$idCompany/categories/$idCategory",
         body: {'id': idCategory, 'name': name, 'description': description},
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
@@ -40,7 +41,7 @@ class UpdateServices extends ChangeNotifier {
       String? description, double? price) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/company/$idCompany/categories/$idCategory/products/$idProduct",
+        "$_baseUrl/api/company/$idCompany/categories/$idCategory/products/$idProduct",
         body: {
           'id': idProduct,
           'name': name,
@@ -67,15 +68,14 @@ class UpdateServices extends ChangeNotifier {
 
   updateCompany(int? id, String? name, String? description) async {
     String? token = await LoginServices().readToken();
-    var response =
-        await Requests.put("http://$_baseUrl/api/company/companies/$id",
-            body: {
-              'id': id,
-              'name': name,
-              'description': description,
-            },
-            headers: {'Authorization': 'Bearer $token'},
-            bodyEncoding: RequestBodyEncoding.JSON);
+    var response = await Requests.put("$_baseUrl/api/company/companies/$id",
+        body: {
+          'id': id,
+          'name': name,
+          'description': description,
+        },
+        headers: {'Authorization': 'Bearer $token'},
+        bodyEncoding: RequestBodyEncoding.JSON);
 
     var resp;
     final Map<String, dynamic> updateCompany =
@@ -97,7 +97,7 @@ class UpdateServices extends ChangeNotifier {
     String? token = await LoginServices().readToken();
 
     var response = await Requests.put(
-        "http://$_baseUrl/api/companies/$id/suggestions/$username/$idSuggestion",
+        "$_baseUrl/api/companies/$id/suggestions/$username/$idSuggestion",
         body: {
           'id': idSuggestion,
           'commentary': commentary,
@@ -124,7 +124,7 @@ class UpdateServices extends ChangeNotifier {
 
   activateOrDeactivate(String? username) async {
     String? token = await LoginServices().readToken();
-    var response = await Requests.put("http://$_baseUrl/api/users/$username",
+    var response = await Requests.put("$_baseUrl/api/users/$username",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -146,7 +146,7 @@ class UpdateServices extends ChangeNotifier {
   acceptSuggestion(int suggestionId) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/suggestions/$suggestionId/accept",
+        "$_baseUrl/api/suggestions/$suggestionId/accept",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -168,7 +168,7 @@ class UpdateServices extends ChangeNotifier {
   denegateSuggestion(int suggestionId) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/suggestions/$suggestionId/denegate",
+        "$_baseUrl/api/suggestions/$suggestionId/denegate",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -190,7 +190,7 @@ class UpdateServices extends ChangeNotifier {
   likeSuggestion(int suggestionId, String? username) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/suggestions/$suggestionId/like/$username",
+        "$_baseUrl/api/suggestions/$suggestionId/like/$username",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -212,7 +212,7 @@ class UpdateServices extends ChangeNotifier {
   dislikeSuggestion(int suggestionId, String? username) async {
     String? token = await LoginServices().readToken();
     var response = await Requests.put(
-        "http://$_baseUrl/api/suggestions/$suggestionId/dislike/$username",
+        "$_baseUrl/api/suggestions/$suggestionId/dislike/$username",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
@@ -235,7 +235,7 @@ class UpdateServices extends ChangeNotifier {
     String? token = await LoginServices().readToken();
 
     var response = await Requests.put(
-        "http://$_baseUrl/api/orders/$orderId/product/$productId/$quantity",
+        "$_baseUrl/api/orders/$orderId/product/$productId/$quantity",
         headers: {'Authorization': 'Bearer $token'},
         bodyEncoding: RequestBodyEncoding.JSON);
 
